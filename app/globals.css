@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0f1117;
+  --color-ink-soft: #1e2130;
+  --color-surface: #ffffff;
+  --color-surface-dim: #f5f6fa;
+  --color-border: #e2e5ee;
+  --color-accent: #2563eb;
+  --color-accent-soft: #eff4ff;
+  --color-accent-muted: #bfcfff;
+  --color-success: #16a34a;
+  --color-danger: #dc2626;
+  --color-text: #1a1f36;
+  --color-text-muted: #6b7280;
+
+  --font-display: "DM Serif Display", Georgia, serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background: var(--color-surface-dim);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+  }
+}
+
+/* Drop zone animations */
+@keyframes pulse-border {
+  0%, 100% { border-color: var(--color-accent-muted); }
+  50% { border-color: var(--color-accent); }
+}
+
+.drop-active {
+  animation: pulse-border 1s ease-in-out infinite;
+  background: var(--color-accent-soft);
+}
+
+/* Fade in animation for sections */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeUp 0.35s ease forwards;
+}
+
+/* Table styles */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  font-family: var(--font-sans);
+}
+
+.data-table th {
+  background: var(--color-ink);
+  color: white;
+  font-weight: 600;
+  text-align: left;
+  padding: 10px 14px;
+  letter-spacing: 0.03em;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.data-table td {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.data-table tr:nth-child(even) td {
+  background: var(--color-surface-dim);
+}
+
+.data-table tr:hover td {
+  background: var(--color-accent-soft);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent-muted); }
